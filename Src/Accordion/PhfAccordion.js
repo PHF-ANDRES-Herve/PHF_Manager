@@ -36,11 +36,12 @@ export default class PhfAccordion extends PureComponent {
     };
     // this._callAction = this._callAction.bind(this);
   }
+
   _callAction = action => {
     this.props.callAction(action);
   };
-  _renderHeader = (item, index) => {
 
+  _renderHeader = (item, index) => {
     /* détermination de l'index du header actif */
     const buttonFocus =
       this.state.activeSections.length === 0
@@ -60,8 +61,12 @@ export default class PhfAccordion extends PureComponent {
                 buttonFocus === 0
                   ? this.props.buttonBorderColor
                   : this.props.headerColor,
-              borderColor: this.props.headerBorderColor,
-              height: 50
+              height: 50,
+              borderColor:
+              buttonFocus === 0
+                  ? this.props.headerFocusBorderColor
+                  : this.props.headerBorderColor,
+              borderWidth:1,
             }
           ]}
         >
@@ -70,8 +75,10 @@ export default class PhfAccordion extends PureComponent {
       </View>
     );
   };
+
   _renderContent = (item, index) => {
     const buttonColor = this.props.buttonBorderColor;
+
     return item.content ? (
       <View style={{ height: "auto", marginTop: 10, marginBottom: 10 }}>
         <AnimatedFlatList
@@ -112,7 +119,9 @@ export default class PhfAccordion extends PureComponent {
   _updateSections = activeSections => {
     this.setState({ activeSections });
   };
+
   render() {
+    
     return (
 
       <Accordion
@@ -121,6 +130,7 @@ export default class PhfAccordion extends PureComponent {
         renderHeader={this._renderHeader}
         renderContent={this._renderContent}
         onChange={this._updateSections}
+        duration={400}
       />
 
     );
