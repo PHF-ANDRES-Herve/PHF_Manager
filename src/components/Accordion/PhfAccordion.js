@@ -6,13 +6,12 @@ import { Animated, Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, Vie
 import Accordion from 'react-native-collapsible/Accordion';
 import { Button } from 'react-native-elements';
 
-import Styles from '../styles/Styles';
+import { screen } from '../../config';
+import Styles from '../../styles';
 
 /**
  * VARIABLES
  */
-var screen = Dimensions.get('window');
-const { width: screenWidth } = Dimensions.get('window');
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
 /**
@@ -23,7 +22,7 @@ export default class PhfAccordion extends PureComponent {
 		super(props);
 		this.state = {
 			activeSections: [],
-			focusHeader: -1
+			focusHeader: -1,
 		};
 		// this._callAction = this._callAction.bind(this);
 	}
@@ -57,8 +56,8 @@ export default class PhfAccordion extends PureComponent {
 								buttonFocus === 0
 									? this.props.headerFocusBorderColor
 									: this.props.headerBorderColor,
-							borderWidth: 1
-						}
+							borderWidth: 1,
+						},
 					]}
 				>
 					{item.title}
@@ -69,7 +68,6 @@ export default class PhfAccordion extends PureComponent {
 
 	_renderContent = (item, index) => {
 		const buttonColor = this.props.buttonBorderColor;
-
 		return item.content ? (
 			<View style={{ height: 'auto', marginTop: 10, marginBottom: 10 }}>
 				<AnimatedFlatList
@@ -78,20 +76,20 @@ export default class PhfAccordion extends PureComponent {
 					renderItem={({ itemc, index }) => (
 						<TouchableOpacity style={[styles.button]}>
 							<Button
-								onPress={() => this._callAction(item.action[index])}
-								buttonStyle={[
-									Styles.buttonText,
-									{
-										height: 30,
-										backgroundColor: 'transparent',
-										alignSelf: 'center',
-										width: this.props.buttonWidth,
-										borderColor: buttonColor,
-										borderWidth: 1,
-										borderRadius: this.props.borderRadius,
-										margin: 10
-									}
-								]}
+								onPress={() =>
+									this._callAction(item.action[index])
+								}
+								titleStyle={Styles.buttonText}
+								buttonStyle={{
+									height: 30,
+									backgroundColor: 'transparent',
+									alignSelf: 'center',
+									width: this.props.buttonWidth,
+									borderColor: buttonColor,
+									borderWidth: 1,
+									borderRadius: this.props.borderRadius,
+									margin: 10,
+								}}
 								large
 								loadingRight
 								title={item.content[index]}
@@ -129,6 +127,6 @@ const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
 		flexGrow: 1,
-		justifyContent: 'center'
-	}
+		justifyContent: 'center',
+	},
 });
