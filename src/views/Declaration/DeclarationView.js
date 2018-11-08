@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground, Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import PhfAccordion from '../../components/Accordion/PhfAccordion';
 import HeaderComponent from '../../components/Header';
@@ -9,22 +9,6 @@ import { DECLARATIONS_ACCORDION } from '../../config/accordionSettings';
 import Styles from '../../styles';
 
 export default class DeclarationView extends Component {
-	static navigationOptions = {
-		title: 'Home',
-		drawerLabel: 'Déclarations',
-		drawerIcon: () => (
-			<View>
-				<ImageBackground
-					source={require('../../images/home.png')}
-					style={{
-						width: 26,
-						height: 26,
-						tintColor: backgroundColor,
-					}}
-				/>
-			</View>
-		),
-	};
 
 	constructor(props) {
 		super(props);
