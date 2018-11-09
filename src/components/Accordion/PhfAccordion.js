@@ -40,17 +40,20 @@ export default class PhfAccordion extends PureComponent {
     this.props.callAction(action);
   };
 
-  _renderHeader = (item, index) => {
+  _renderHeader = (item, index, isActive) => {
     // détermination de l'index du header actif
     const buttonFocus =
       this.state.activeSections.length === 0
         ? -1
         : this.state.activeSections - index;
     if (buttonFocus === 0) {
+      // cas : content absent --> action directe
       this.state.focusHeader = index;
+      !item.content ? this._callAction(item.action[0]) : null;
     }
-    // mémo de l'item
     this.state.sectionItem = item;
+
+    // mémo de l'item
     return (
       <View>
         <Text
@@ -113,10 +116,6 @@ export default class PhfAccordion extends PureComponent {
 
   _updateSections = activeSections => {
     this.setState({ activeSections });
-    // cas : content absent --> action directe
-    !this.state.sectionItem.content
-        ? this._callAction(this.state.sectionItem.action[0])
-        : null;
   };
 
   render() {
