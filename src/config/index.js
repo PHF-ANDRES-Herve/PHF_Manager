@@ -2,6 +2,7 @@ import React, { Component, PureComponent } from 'react';
 import { BackHandler, Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableHighLight, View } from 'react-native';
 
 import { percentColors1, percentColors2, percentColors3, percentColors4 } from './constantes';
+import { COW_DATAS } from './dataTest';
 
 const colorIndex = {
 	'-0.1': '#ffe6e6',
@@ -71,6 +72,10 @@ const config = {
 };
 export default config;
 
+export const screen = Dimensions.get('window');
+
+export const cowDatas = COW_DATAS;
+
 export function _getProps(title, message) {
 	let alertProps = {};
 	let show2 = false;
@@ -102,10 +107,6 @@ export function _getProps(title, message) {
 	});
 }
 export function getColorForPercentage(pct, percentColors) {
-	// console.log('---pct---');
-	// console.log(pct);
-	// console.log('---%colors---');
-	// console.log(percentColors);
 	if (pct > percentColors[4].pct) {
 		pct = percentColors[4].pct;
 	} else if (pct < percentColors[0].pct) {
@@ -139,8 +140,6 @@ export function getColor(value) {
 }
 export class BackgroundImage extends Component {
 	render() {
-		console.log('this.props.source');
-		console.log(this.props.source);
 		return (
 			<ImageBackground
 				source={require('../images/fond-bleu-PHF-200.jpg')}
