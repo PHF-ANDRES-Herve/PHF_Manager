@@ -43,7 +43,7 @@ class ClickColumn extends PureComponent {
               styles.TitleColumn
             ]}
             numberOfLines={2}
-            ellipsizeMode='tail'
+            ellipsizeMode="tail"
           >
             {column}
           </Text>
@@ -75,7 +75,7 @@ class ClickName extends PureComponent {
               }
             ]}
             numberOfLines={2}
-            ellipsizeMode='tail'
+            ellipsizeMode="tail"
           >
             {colName}
           </Text>
@@ -132,6 +132,8 @@ export default class PhfTable extends PureComponent {
                   styles.GridViewInsideTextItemStyle,
                   item[objectKey].style
                 ]}
+                numberOfLines={2}
+                ellipsizeMode="tail"
               >
                 {item[objectKey].val}
               </Text>
