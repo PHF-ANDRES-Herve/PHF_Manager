@@ -186,7 +186,7 @@ export default class PhfTable extends PureComponent {
    */
   _handleLoadMore = async () => {
     this.props.loadMore();
-    this.mainScroll.scrollTo({ y: 0, animated: true });
+    this.mainScroll.scrollTo({ y: 1, animated: true });
   };
 
   /**
@@ -194,6 +194,7 @@ export default class PhfTable extends PureComponent {
    */
   _handleLoadBack() {
     this.props.loadBack();
+    this.mainScroll.scrollTo({ y: 1, animated: true });
   }
 
   /**
