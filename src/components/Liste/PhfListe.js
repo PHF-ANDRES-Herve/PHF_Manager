@@ -186,9 +186,10 @@ export default class PhfTable extends PureComponent {
 	 */
 	_handleLoadBack() {
 		console.log("liste _handleLoadBack");
+		//console.log(this.state.stopLoading);
 		this.state.stopLoading = true;
 		this.props.loadBack();
-		//this.mainScroll.scrollTo({ y: 1, animated: true });
+		//this.mainScroll.scrollTo({ y: 0, animated: true });
 	}
 
 	/**
