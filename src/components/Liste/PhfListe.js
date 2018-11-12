@@ -9,13 +9,13 @@ class ClickColumn extends PureComponent {
 		 * on a besoin d'une clé unique dans le cas où le libellé affiché est différent
 		 */
 		const columnKey =
-			this.props.keyIndex !== '' // si présent dans les props: indique que la clé de tri et le libellé affichés sont différents
+			(this.props.keyIndex !== '') // si présent dans les props: indique que la clé de tri et le libellé affichés sont différents
 				? this.props.keyIndex
 				: this.props.column;
 		const orderByString =
-			this.props.orderBy !== '' // si présent dans les props: indique un tri alphanumérique
-				? '1' + this.props.orderBy
-				: '2' + columnKey; //1 = string (ex:Name), 2 = numeric (ex:MO_CD)
+			(this.props.orderBy !== '') // si présent dans les props: indique un tri alphanumérique
+				? ('1' + this.props.orderBy)
+				: ('2' + columnKey); //1 = string (ex:Name), 2 = numeric (ex:MO_CD)
 		this.props.onPressColumn(columnKey, orderByString);
 	};
 	render() {
@@ -109,7 +109,7 @@ export default class PhfTable extends PureComponent {
 	_layoutItem(Item) {
 		const item = this.props.layoutItem(Item);
 
-		return item !== undefined && item !== null ? (
+		return ((item !== undefined) && (item !== null)) ? (
 			<TouchableOpacity
 				onPress={() => this.props.layoutOnPress(item)}
 				onLongPress={() => this.props.layoutOnLongPress(item)}
@@ -176,7 +176,7 @@ export default class PhfTable extends PureComponent {
 	 */
 	_handleLoadMore = async () => {
 		console.log("liste _handleLoadMore");
-		//this.state.stopLoading = true;
+		this.state.stopLoading = true;
 		this.props.loadMore();
 		this.mainScroll.scrollTo({ y: 1, animated: true });
 	};
@@ -186,7 +186,7 @@ export default class PhfTable extends PureComponent {
 	 */
 	_handleLoadBack() {
 		console.log("liste _handleLoadBack");
-		//this.state.stopLoading = true;
+		this.state.stopLoading = true;
 		this.props.loadBack();
 		//this.mainScroll.scrollTo({ y: 1, animated: true });
 	}
@@ -195,7 +195,7 @@ export default class PhfTable extends PureComponent {
 	 * TRI DES COLONNES
 	 */
 	_handleSortColumn(param, param1) {
-		//this.state.stopLoading = true;
+		this.state.stopLoading = true;
 		this.props.handleSortColumn(param, param1);
 	}
 
@@ -211,13 +211,13 @@ export default class PhfTable extends PureComponent {
 	isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
 		const paddingToBottom = 20;
 		return (
-			layoutMeasurement.height + contentOffset.y >=
-			contentSize.height - paddingToBottom
+			(layoutMeasurement.height + contentOffset.y) >=
+			(contentSize.height - paddingToBottom)
 		);
 	};
 
 	isCloseToTop = ({ contentOffset }) => {
-		return contentOffset.y <= 1;
+		return (contentOffset.y <= 1);
 	};
 
 	componentWillReceiveProps(nextProps) {
@@ -294,9 +294,11 @@ export default class PhfTable extends PureComponent {
 							],
 							{
 								listener: event => {
-									if ((this.props.stopLoading !== true) &&
+									if (
+										(this.props.stopLoading !== true) &&
 										(this.state.stopLoading !== true) &&
-										this.isCloseToBottom(event.nativeEvent)) {
+										this.isCloseToBottom(event.nativeEvent)
+									) {
 										this._handleLoadMore();
 									} else {
 										if (
