@@ -175,7 +175,6 @@ export default class PhfTable extends PureComponent {
 	 * CHARGEMENT SUIVANT
 	 */
 	_handleLoadMore = async () => {
-		console.log("liste _handleLoadMore");
 		this.state.stopLoading = true;
 		this.props.loadMore();
 		this.mainScroll.scrollTo({ y: 1, animated: true });
@@ -185,8 +184,6 @@ export default class PhfTable extends PureComponent {
 	 * CHARGEMENT PRECEDENT
 	 */
 	_handleLoadBack() {
-		console.log("liste _handleLoadBack");
-		//console.log(this.state.stopLoading);
 		this.state.stopLoading = true;
 		this.props.loadBack();
 		//this.mainScroll.scrollTo({ y: 0, animated: true });
