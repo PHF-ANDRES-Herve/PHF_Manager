@@ -111,8 +111,8 @@ export default class PhfTable extends PureComponent {
 
 		return ((item !== undefined) && (item !== null)) ? (
 			<TouchableOpacity
-				onPress={() => this.props.layoutOnPress(item)}
-				onLongPress={() => this.props.layoutOnLongPress(item)}
+				onPress={() => this.props.layoutOnPress(Item)}
+				onLongPress={() => this.props.layoutOnLongPress(Item)}
 			>
 				<View style={styles.GridViewBlockStyle}>
 					{Object.keys(item).map((objectKey, value) => {
