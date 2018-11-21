@@ -8,7 +8,7 @@ import { Decl, Info, Menu } from '../views';
 import { Declaration, DeclarationEntry, DeclarationExit, DeclarationPregnancyDiagnostic, DeclarationReproductionAct } from '../views/Declaration';
 import HomeView from '../views/HomeView';
 import Apropos from '../views/Info';
-import ListTest from '../views/ListTestView';
+import ListTest from '../views/ListTest/ListTestView';
 import Login from '../views/Login';
 
 //import Liste from './src/components/Liste';

@@ -1,19 +1,12 @@
 /**
  * IMPORT RN
  */
-import React, { PureComponent } from "react";
-import {
-  Animated,
-  Dimensions,
-  FlatList,
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity
-} from "react-native";
-import { Button } from "react-native-elements";
-import Accordion from "react-native-collapsible/Accordion";
-import Styles from "../styles/Styles";
+import React, { PureComponent } from 'react';
+import { Animated, Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Accordion from 'react-native-collapsible/Accordion';
+import { Button } from 'react-native-elements';
+
+import Styles from '../../styles/';
 
 /**
  * VARIABLES
@@ -30,8 +23,6 @@ export default class PhfAccordion extends PureComponent {
     super(props);
     this.state = {
       activeSections: [],
-      focusHeader: -1,
-      sectionItem: {}
     };
     // this._callAction = this._callAction.bind(this);
   }
@@ -48,10 +39,8 @@ export default class PhfAccordion extends PureComponent {
         : this.state.activeSections - index;
     if (buttonFocus === 0) {
       // cas : content absent --> action directe
-      this.state.focusHeader = index;
       !item.content ? this._callAction(item.action[0]) : null;
     }
-    this.state.sectionItem = item;
 
     // mémo de l'item
     return (
